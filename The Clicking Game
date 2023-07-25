@@ -1,0 +1,820 @@
+import java.awt.Color;
+import java.awt.Font;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
+import javax.swing.*;
+
+public class ClickingGame {
+
+    public static void main(String[] args) {
+    	
+    	ImageIcon image = new ImageIcon("Invisible.jpg");
+    	
+    	ImageIcon image2 = new ImageIcon("Rick with guns.jpg");
+    	
+    	JLabel label3 = new JLabel();
+    	label3.setBounds(100, 25, 100, 50);
+    	label3.setForeground(Color.white);
+    	label3.setFont(label3.getFont().deriveFont(14f));
+    	
+    	JButton button22 = new JButton("Point per click + 10000000");
+        button22.setBounds(660, 100, 200, 50);
+        button22.setVisible(false);
+        button22.setEnabled(false);
+        button22.setFocusable(false);
+    	
+    	JButton button21 = new JButton("Point per click + 5000000");
+        button21.setBounds(660, 100, 200, 50);
+        button21.setVisible(false);
+        button21.setEnabled(false);
+        button21.setFocusable(false);
+    	
+    	JButton button20 = new JButton("Point per click + 2500000");
+        button20.setBounds(660, 100, 200, 50);
+        button20.setVisible(false);
+        button20.setEnabled(false);
+        button20.setFocusable(false);
+    	
+    	JButton button19 = new JButton("Point per click + 1000000");
+        button19.setBounds(660, 100, 200, 50);
+        button19.setVisible(false);
+        button19.setEnabled(false);
+        button19.setFocusable(false);
+    	
+    	JButton button18 = new JButton("Point per click + 500000");
+        button18.setBounds(660, 100, 175, 50);
+        button18.setVisible(false);
+        button18.setEnabled(false);
+        button18.setFocusable(false);
+    	
+    	JButton button17 = new JButton("Point per click + 250000");
+        button17.setBounds(685, 100, 175, 50);
+        button17.setVisible(false);
+        button17.setEnabled(false);
+        button17.setFocusable(false);
+    	
+    	JButton button16 = new JButton("Point per click + 100000");
+        button16.setBounds(685, 100, 175, 50);
+        button16.setVisible(false);
+        button16.setEnabled(false);
+        button16.setFocusable(false);
+    	
+    	JButton button15 = new JButton("Point per click + 50000");
+        button15.setBounds(685, 100, 175, 50);
+        button15.setVisible(false);
+        button15.setEnabled(false);
+        button15.setFocusable(false);
+    	
+    	JButton button14 = new JButton("Point per click + 25000");
+        button14.setBounds(685, 100, 175, 50);
+        button14.setVisible(false);
+        button14.setEnabled(false);
+        button14.setFocusable(false);
+    	
+    	JButton button13 = new JButton("Point per click + 10000");
+        button13.setBounds(685, 100, 175, 50);
+        button13.setVisible(false);
+        button13.setEnabled(false);
+        button13.setFocusable(false);
+    	
+    	JButton button12 = new JButton("Point per click + 5000");
+        button12.setBounds(685, 100, 175, 50);
+        button12.setVisible(false);
+        button12.setEnabled(false);
+        button12.setFocusable(false);
+    	
+    	JButton button11 = new JButton("Point per click + 2500");
+        button11.setBounds(685, 100, 175, 50);
+        button11.setVisible(false);
+        button11.setEnabled(false);
+        button11.setFocusable(false);
+    	
+    	JButton button10 = new JButton("Point per click + 1000");
+        button10.setBounds(685, 100, 175, 50);
+        button10.setVisible(false);
+        button10.setEnabled(false);
+        button10.setFocusable(false);
+    	
+    	JButton button9 = new JButton("Point per click + 500");
+        button9.setBounds(685, 100, 150, 50);
+        button9.setVisible(false);
+        button9.setEnabled(false);
+        button9.setFocusable(false);
+    	
+    	JButton button8 = new JButton("Point per click + 250");
+        button8.setBounds(685, 100, 150, 50);
+        button8.setVisible(false);
+        button8.setEnabled(false);
+        button8.setFocusable(false);
+    	
+    	JButton button7 = new JButton("Point per click + 100");
+        button7.setBounds(685, 100, 150, 50);
+        button7.setVisible(false);
+        button7.setEnabled(false);
+        button7.setFocusable(false);
+    	
+    	JButton button6 = new JButton("Point per click + 50");
+        button6.setBounds(685, 100, 150, 50);
+        button6.setVisible(false);
+        button6.setEnabled(false);
+        button6.setFocusable(false);
+    	
+    	JButton button5 = new JButton("Point per click + 25");
+        button5.setBounds(685, 100, 150, 50);
+        button5.setVisible(false);
+        button5.setEnabled(false);
+        button5.setFocusable(false);
+    	
+    	JButton button4 = new JButton("Point per click + 10");
+        button4.setBounds(685, 100, 150, 50);
+        button4.setVisible(false);
+        button4.setEnabled(false);
+        button4.setFocusable(false);
+    	
+    	JButton button3 = new JButton("Point per click + 5");
+        button3.setBounds(685, 100, 150, 50);
+        button3.setVisible(false);
+        button3.setEnabled(false);
+        button3.setFocusable(false);
+    	
+        JLabel label = new JLabel();
+        label.setBounds(410, 175, 200, 50);
+        label.setFont(new Font("MV Boli",Font.PLAIN,15));
+        label.setForeground(Color.white);
+
+        JLabel label2 = new JLabel();
+        label2.setText("Reach 20 points");
+        label2.setBounds(700, 50, 150, 50);
+        label2.setVisible(false);
+        label2.setForeground(Color.white);
+        label2.setFont(new Font("MV Boli",Font.PLAIN,15));
+
+        JButton button2 = new JButton("Point per click + 2");
+        button2.setBounds(685, 100, 150, 50);
+        button2.setVisible(true);
+        button2.setEnabled(false);
+        button2.setFocusable(false);
+        button2.setVisible(false);
+
+        JButton button = new JButton("Click me!");
+        button.setBounds(400, 100, 100, 50);
+        button.setFont(new Font("MV Boli",Font.PLAIN,15));
+        button.setFocusable(false);
+        button.setVisible(false);
+        
+        JLabel label5 = new JLabel();
+        label5.setText("The Clicking Game");
+        label5.setBounds(350,100,300,50);
+        label5.setForeground(Color.white);
+        label5.setFont(label5.getFont().deriveFont(25f));
+        
+        Timer timer = new Timer(10000, e -> {
+        	label.setText("");
+        });
+        
+        JFrame frame = new JFrame("The Clicking Game.");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(900, 600);
+        frame.setLayout(null);
+        frame.setVisible(true);
+        frame.getContentPane().setBackground(Color.black);
+        frame.setResizable(false);
+        frame.setIconImage(image.getImage());
+        frame.add(button);
+        frame.add(label);
+        frame.add(label2);
+        frame.add(label3);
+        frame.add(label5);
+        frame.add(button2);
+        frame.add(button3);
+        frame.add(button4);
+        frame.add(button5);
+        frame.add(button6);
+        frame.add(button7);
+        frame.add(button8);
+        frame.add(button9);
+        frame.add(button10);
+        frame.add(button11);
+        frame.add(button12);
+        frame.add(button13);
+        frame.add(button14);
+        frame.add(button15);
+        frame.add(button16);
+        frame.add(button17);
+        frame.add(button18);
+        frame.add(button19);
+        frame.add(button20);
+        frame.add(button21);
+        frame.add(button22);
+        
+        JButton startButton = new JButton("Start");
+        frame.add(startButton);
+        startButton.setBounds(400, 200, 100, 50);
+        startButton.setFont(new Font("MV Boli",Font.PLAIN,15));
+        startButton.setFocusable(false);
+        startButton.addActionListener(b -> {
+        	
+        	startButton.setEnabled(false);
+        	
+        	Timer startTimer = new Timer(2000, i -> {
+        		label5.setText("");
+        		startButton.setVisible(false);
+        	});
+        	
+        	startTimer.setRepeats(false);
+        	startTimer.start();
+        	
+        	Timer gameStartTimer = new Timer(3000, r -> {
+        		
+        		label2.setVisible(true);
+        		button.setVisible(true);
+        		button2.setVisible(true);
+        		label3.setText("Time: 0:00");
+        		
+        		AtomicInteger clickCounts = new AtomicInteger();
+                AtomicBoolean isButtonClicked = new AtomicBoolean(false);
+                AtomicBoolean isButtonClicked2 = new AtomicBoolean(false);
+                AtomicBoolean isButtonClicked3 = new AtomicBoolean(false);
+                AtomicBoolean isButtonClicked4 = new AtomicBoolean(false);
+                AtomicBoolean isButtonClicked5 = new AtomicBoolean(false);
+                AtomicBoolean isButtonClicked6 = new AtomicBoolean(false);
+                AtomicBoolean isButtonClicked7 = new AtomicBoolean(false);
+                AtomicBoolean isButtonClicked8 = new AtomicBoolean(false);
+                AtomicBoolean isButtonClicked9 = new AtomicBoolean(false);
+                AtomicBoolean isButtonClicked10 = new AtomicBoolean(false);
+                AtomicBoolean isButtonClicked11 = new AtomicBoolean(false);
+                AtomicBoolean isButtonClicked12 = new AtomicBoolean(false);
+                AtomicBoolean isButtonClicked13 = new AtomicBoolean(false);
+                AtomicBoolean isButtonClicked14 = new AtomicBoolean(false);
+                AtomicBoolean isButtonClicked15 = new AtomicBoolean(false);
+                AtomicBoolean isButtonClicked16 = new AtomicBoolean(false);
+                AtomicBoolean isButtonClicked17 = new AtomicBoolean(false);
+                AtomicBoolean isButtonClicked18 = new AtomicBoolean(false);
+                AtomicBoolean isButtonClicked19 = new AtomicBoolean(false);
+                AtomicBoolean isButtonClicked20 = new AtomicBoolean(false);
+                AtomicBoolean isButtonClicked21 = new AtomicBoolean(false);
+                AtomicInteger counts = new AtomicInteger(clickCounts.get());
+        
+                
+                button.addActionListener(a -> {
+                	long startTime = System.currentTimeMillis();
+                	Thread timeDisplayThread = new Thread(() -> {
+                        while (true) {
+                            long currentTime = System.currentTimeMillis() - startTime;
+                            long seconds = currentTime / 1000;
+                            long minutes = seconds / 60;
+                            seconds %= 60;
+                            
+                            if(seconds <= 9) {
+                            	label3.setText("");
+                            	label3.setText("Time: " + minutes + ":" + "0" + seconds);
+                            }
+                            
+                            if(seconds >= 10) {
+                            	label3.setText("");
+                            	label3.setText("Time: " + minutes + ":" + seconds);
+                            }
+                            
+                            try {
+                                Thread.sleep(1000);
+                            }
+                            catch (InterruptedException e) {
+                                Thread.currentThread().interrupt();
+                                break;
+                            }
+                        }
+                    });
+                	timeDisplayThread.start();
+                	counts.addAndGet(2000000000);
+                		if(!isButtonClicked21.get()) {
+                    		if(!isButtonClicked20.get()) {
+                        		if(!isButtonClicked19.get()) {
+                            		if(!isButtonClicked18.get()) {
+                                		if(!isButtonClicked17.get()) {
+                                    		if(!isButtonClicked16.get()) {
+                                        		if(!isButtonClicked15.get()) {
+                                            		if(!isButtonClicked14.get()) {
+                                                		if(!isButtonClicked13.get()) {
+                                                    		if(!isButtonClicked12.get()) {
+                                                        		if(!isButtonClicked11.get()) {
+                                                            		if(!isButtonClicked10.get()) {
+                                                                		if(!isButtonClicked9.get()) {
+                                                                    		if(!isButtonClicked8.get()) {
+                                                                    		if(!isButtonClicked7.get()) {
+                                                                    		if(!isButtonClicked6.get()) {
+                                                                    		if(!isButtonClicked5.get()) {
+                                                                    		if(!isButtonClicked4.get()) {
+                                                                        		if(!isButtonClicked3.get()) {
+                                                                        		if(!isButtonClicked2.get()) {
+                                                                        		if(!isButtonClicked.get()) {
+                                                                            		if(counts.get() == 1) {
+                                                                                	label.setText("Point: " + counts);
+                                                                                }
+                                                                                
+                                                                                if(counts.get() >= 2) {
+                                                                                	label.setText("Points: " + counts);
+                                                                                }
+                                                                                if(counts.get() >= 20) {
+                                                                                	label.setText("Points: " + counts);
+                                                                                	button2.setEnabled(true);
+                                                                                }
+                                                                            }
+                                                                            	else {
+                                                                            		counts.addAndGet(1);
+                                                                            		label.setText("Points: " + counts);
+                                                                            	}
+                                                                        		if(counts.get() >= 100) {
+                                                                        			label.setText("Points: " + counts);
+                                                                        			button3.setEnabled(true);
+                                                                        		}
+                                                                        		
+                                                                        	}
+                                                                        	
+                                                                        	else {
+                                                                        		counts.addAndGet(4);
+                                                                        		label.setText("Points: " + counts);
+                                                                        	}
+                                                                        		
+                                                                        		if(counts.get() >= 500) {
+                                                                        			label.setText("Points: " + counts);
+                                                                        			button4.setEnabled(true);
+                                                                        		}
+                                                                        }
+                                                                        	else {
+                                                                        		counts.addAndGet(9);
+                                                                        		label.setText("Points: " + counts);
+                                                                        	}
+                                                                        		if(counts.get() >= 1000) {
+                                                                        			label.setText("Points: " + counts);
+                                                                        			button5.setEnabled(true);
+                                                                        		}
+                                                                        }
+                                                                        	else {
+                                                                        		counts.addAndGet(24);
+                                                                        		label.setText("Points: " + counts);
+                                                                        	}
+                                                                    		if(counts.get() >= 5000) {
+                                                                    			label.setText("Points: " + counts);
+                                                                    			button6.setEnabled(true);
+                                                                    		}
+                                                                    	}
+                                                                    	else {
+                                                                    		counts.addAndGet(49);
+                                                                    		label.setText("Points: " + counts);
+                                                                    	}
+                                                                    		if(counts.get() >= 15000) {
+                                                                    			label.setText("Points: " + counts);
+                                                                    			button7.setEnabled(true);
+                                                                    		}
+                                                                    }
+                                                                    	else {
+                                                                    		counts.addAndGet(99);
+                                                                    		label.setText("Points: " + counts);
+                                                                    	}
+                                                                    		if(counts.get() >= 30000) {
+                                                                    			label.setText("Points: " + counts);
+                                                                    			button8.setEnabled(true);
+                                                                    		}
+                                                                    }
+                                                                    	else {
+                                                                    		counts.addAndGet(249);
+                                                                    		label.setText("Points: " + counts);
+                                                                    	}
+                                                                    		if(counts.get() >= 50000) {
+                                                                    			label.setText("Points: " + counts);
+                                                                    			button9.setEnabled(true);
+                                                                    		}
+                                                                    }
+                                                                    	else {
+                                                                    		counts.addAndGet(499);
+                                                                    		label.setText("Points: " + counts);
+                                                                    	}
+                                                                    		if(counts.get() >= 100000) {
+                                                                    			label.setText("Points: " + counts);
+                                                                    			button10.setEnabled(true);
+                                                                    		}
+                                                                    }
+                                                                    	else {
+                                                                    		counts.addAndGet(999);
+                                                                    		label.setText("Points: " + counts);
+                                                                    	}
+                                                                		if(counts.get() >= 200000) {
+                                                                			label.setText("Points: " + counts);
+                                                                			button11.setEnabled(true);
+                                                                		}
+                                                                	}
+                                                                	else {
+                                                                		counts.addAndGet(2499);
+                                                                		label.setText("Points: " + counts);
+                                                                	}
+                                                            		if(counts.get() >= 500000) {
+                                                            			label.setText("Points: " + counts);
+                                                            			button12.setEnabled(true);
+                                                            		}
+                                                            	}
+                                                            	else {
+                                                            		counts.addAndGet(4999);
+                                                            		label.setText("Points: " + counts);
+                                                            	}
+                                                        		if(counts.get() >= 1000000) {
+                                                        			label.setText("Points: " + counts);
+                                                        			button13.setEnabled(true);
+                                                        		}
+                                                        	}
+                                                        	else {
+                                                        		counts.addAndGet(9999);
+                                                        		label.setText("Points: " + counts);
+                                                        	}
+                                                    		if(counts.get() >= 2500000) {
+                                                    			label.setText("Points: " + counts);
+                                                    			button14.setEnabled(true);
+                                                    		}
+                                                    	}
+                                                    	else {
+                                                    		counts.addAndGet(24999);
+                                                    		label.setText("Points: " + counts);
+                                                    	}
+                                                		if(counts.get() >= 5000000) {
+                                                			label.setText("Points: " + counts);
+                                                			button15.setEnabled(true);
+                                                		}
+                                                	}
+                                                	else {
+                                                		counts.addAndGet(4999);
+                                                		label.setText("Points: " + counts);
+                                                	}
+                                            		if(counts.get() >= 10000000) {
+                                            			label.setText("Points: " + counts);
+                                            			button16.setEnabled(true);
+                                            		}
+                                            	}
+                                            	else {
+                                            		counts.addAndGet(99999);
+                                            		label.setText("Points: " + counts);
+                                            	}
+                                        		if(counts.get() >= 25000000) {
+                                        			label.setText("Points: " + counts);
+                                        			button17.setEnabled(true);
+                                        		}
+                                        	}
+                                        	else {
+                                        		counts.addAndGet(249999);
+                                        		label.setText("Points: " + counts);
+                                        	}
+                                    		if(counts.get() >= 50000000) {
+                                    			label.setText("Points: " + counts);
+                                    			button18.setEnabled(true);
+                                    		}
+                                    	}
+                                    	else {
+                                    		counts.addAndGet(499999);
+                                    		label.setText("Points: " + counts);
+                                    	}
+                                		if(counts.get() >= 100000000) {
+                                			label.setText("Points: " + counts);
+                                			button19.setEnabled(true);
+                                		}
+                                	}
+                                	else {
+                                		counts.addAndGet(999999);
+                                		label.setText("Points: " + counts);
+                                	}
+                            		if(counts.get() >= 250000000) {
+                            			label.setText("Points: " + counts);
+                            			button20.setEnabled(true);
+                            		}
+                            	}
+                            	else {
+                            		counts.addAndGet(2499999);
+                            		label.setText("Points: " + counts);
+                            	}
+                        		if(counts.get() >= 500000000) {
+                        			label.setText("Points: " + counts);
+                        			button21.setEnabled(true);
+                        		}
+                        	}
+                        	else {
+                        		counts.addAndGet(4999999);
+                        		label.setText("Points: " + counts);
+                        	}
+                    		if(counts.get() >= 1000000000) {
+                    			label.setText("Points: " + counts);
+                    			button22.setEnabled(true);
+                    		}
+                    	}
+                    	else {
+                    		counts.addAndGet(9999999);
+                    		label.setText("Points: " + counts);
+                    	}
+
+                        button2.addActionListener(e ->{
+                		isButtonClicked.set(true);
+                		button2.setEnabled(false);
+                		label2.setText("Reach 100 points");
+                		button2.setVisible(false);
+                		button3.setVisible(true);
+                		});
+                	
+                	button3.addActionListener(e ->{
+                		isButtonClicked2.set(true);
+                		button3.setEnabled(false);
+                		label2.setText("Reach 500 points");
+                		button3.setVisible(false);
+                		button4.setVisible(true);
+                		
+                		});
+                	
+                	button4.addActionListener(e ->{
+                		isButtonClicked3.set(true);
+                		button4.setEnabled(false);
+                		label2.setText("Reach 1000 points");
+                		button4.setEnabled(false);
+                		button4.setVisible(false);
+                		button5.setVisible(true);
+                		});
+                	
+                	// Copy this.
+                	button5.addActionListener(e ->{
+                		isButtonClicked4.set(true);
+                		button4.setEnabled(false);
+                		label2.setText("Reach 5000 points");
+                		button5.setVisible(false);
+                		button5.setEnabled(false);
+                		button6.setVisible(true);
+                		});
+                	
+                	button6.addActionListener(e ->{
+                		isButtonClicked5.set(true);
+                		button5.setEnabled(false);
+                		label2.setText("Reach 15000 points");
+                		button6.setVisible(false);
+                		button6.setEnabled(false);
+                		button7.setVisible(true);
+                		});
+                	
+                	button7.addActionListener(e ->{
+                		isButtonClicked6.set(true);
+                		button6.setEnabled(false);
+                		label2.setText("Reach 30000 points");
+                		button7.setVisible(false);
+                		button7.setEnabled(false);
+                		button8.setVisible(true);
+                		});
+                	
+                	button8.addActionListener(e ->{
+                		isButtonClicked7.set(true);
+                		button7.setEnabled(false);
+                		label2.setText("Reach 50000 points");
+                		button8.setVisible(false);
+                		button8.setEnabled(false);
+                		button9.setVisible(true);
+                		});
+                	
+                	button9.addActionListener(e ->{
+                		isButtonClicked8.set(true);
+                		button8.setEnabled(false);
+                		label2.setText("Reach 100000 points");
+                		label2.setBounds(700, 50, 200, 50);
+                		button9.setVisible(false);
+                		button9.setEnabled(false);
+                		button10.setVisible(true);
+                		});
+                	
+                	button10.addActionListener(e ->{
+                		isButtonClicked9.set(true);
+                		button9.setEnabled(false);
+                		label2.setText("Reach 200000 points");
+                		label2.setBounds(700, 50, 200, 50);
+                		button10.setVisible(false);
+                		button10.setEnabled(false);
+                		button11.setVisible(true);
+                		});
+                	
+                	button11.addActionListener(e ->{
+                		isButtonClicked10.set(true);
+                		button10.setEnabled(false);
+                		label2.setText("Reach 500000 points");
+                		label2.setBounds(700, 50, 200, 50);
+                		button11.setVisible(false);
+                		button11.setEnabled(false);
+                		button12.setVisible(true);
+                		});
+                	
+                	button12.addActionListener(e ->{
+                		isButtonClicked11.set(true);
+                		button11.setEnabled(false);
+                		label2.setText("Reach 1000000 points");
+                		label2.setBounds(700, 50, 200, 50);
+                		button12.setVisible(false);
+                		button12.setEnabled(false);
+                		button13.setVisible(true);
+                		});
+                	
+                	button13.addActionListener(e ->{
+                		isButtonClicked12.set(true);
+                		button12.setEnabled(false);
+                		label2.setText("Reach 2500000 points");
+                		label2.setBounds(700, 50, 200, 50);
+                		button13.setVisible(false);
+                		button13.setEnabled(false);
+                		button14.setVisible(true);
+                		});
+                	
+                	button14.addActionListener(e ->{
+                		isButtonClicked13.set(true);
+                		button13.setEnabled(false);
+                		label2.setText("Reach 5000000 points");
+                		label2.setBounds(700, 50, 200, 50);
+                		button14.setVisible(false);
+                		button14.setEnabled(false);
+                		button15.setVisible(true);
+                		});
+                	
+                	button15.addActionListener(e ->{
+                		isButtonClicked14.set(true);
+                		button14.setEnabled(false);
+                		label2.setText("Reach 10000000 points");
+                		label2.setBounds(700, 50, 200, 50);
+                		button15.setVisible(false);
+                		button15.setEnabled(false);
+                		button16.setVisible(true);
+                		});
+                	
+                	button16.addActionListener(e ->{
+                		isButtonClicked15.set(true);
+                		button15.setEnabled(false);
+                		label2.setText("Reach 25000000 points");
+                		label2.setBounds(700, 50, 200, 50);
+                		button16.setVisible(false);
+                		button16.setEnabled(false);
+                		button17.setVisible(true);
+                		});
+                	
+                	button17.addActionListener(e ->{
+                		isButtonClicked16.set(true);
+                		button16.setEnabled(false);
+                		label2.setText("Reach 50000000 points");
+                		label2.setBounds(660, 50, 200, 50);
+                		button17.setVisible(false);
+                		button17.setEnabled(false);
+                		button18.setVisible(true);
+                		});
+                	
+                	button18.addActionListener(e ->{
+                		isButtonClicked17.set(true);
+                		button17.setEnabled(false);
+                		label2.setText("Reach 100000000 points");
+                		label2.setBounds(660, 50, 200, 50);
+                		button18.setVisible(false);
+                		button18.setEnabled(false);
+                		button19.setVisible(true);
+                		});
+                	
+                	button19.addActionListener(e ->{
+                		isButtonClicked18.set(true);
+                		button18.setEnabled(false);
+                		label2.setText("Reach 250000000 points");
+                		label2.setBounds(660, 50, 200, 50);
+                		button19.setVisible(false);
+                		button19.setEnabled(false);
+                		button20.setVisible(true);
+                		});
+                	
+                	button20.addActionListener(e ->{
+                		isButtonClicked19.set(true);
+                		button19.setEnabled(false);
+                		label2.setText("Reach 500000000 points");
+                		label2.setBounds(660, 50, 200, 50);
+                		button20.setVisible(false);
+                		button20.setEnabled(false);
+                		button21.setVisible(true);
+                		});
+                	
+                	button21.addActionListener(e ->{
+                		isButtonClicked20.set(true);
+                		button20.setEnabled(false);
+                		label2.setText("Reach 1000000000 points");
+                		label2.setBounds(660, 50, 200, 50);
+                		button21.setVisible(false);
+                		button21.setEnabled(false);
+                		button22.setVisible(true);
+                		});
+                	
+                	button22.addActionListener(e ->{
+                		isButtonClicked21.set(true);
+                		button21.setEnabled(false);
+                		label2.setText("Reach 2147483647 points");
+                		label2.setBounds(360, 50, 225, 50);
+                		button22.setVisible(false);
+                		button22.setEnabled(false);
+                		});
+                    
+                    timer.restart();
+                    
+                    if(counts.get() < 0) {
+                    	timeDisplayThread.interrupt();
+                		label.setText("Points: 2147483647");
+                		button.setEnabled(false);
+                		button2.setEnabled(false);
+            			button3.setEnabled(false);
+            			button4.setEnabled(false);
+            			button5.setEnabled(false);
+            			button6.setEnabled(false);
+            			button7.setEnabled(false);
+            			button8.setEnabled(false);
+            			button9.setEnabled(false);
+            			button10.setEnabled(false);
+            			button11.setEnabled(false);
+            			button12.setEnabled(false);
+            			button13.setEnabled(false);
+            			button14.setEnabled(false);
+            			button15.setEnabled(false);
+            			button16.setEnabled(false);
+            			button17.setEnabled(false);
+            			button18.setEnabled(false);
+            			button19.setEnabled(false);
+            			button20.setEnabled(false);
+            			button21.setEnabled(false);
+            			button22.setEnabled(false);
+            			
+            			Timer timer6 = new Timer(3000, e -> {
+                			label3.setText("");
+                		});
+                		
+                		timer6.setRepeats(false);
+                		timer6.start();
+            			
+                		Timer timer2 = new Timer(4000, e -> {
+                			label2.setText("");
+                		});
+                		timer2.setRepeats(false);
+                		timer2.start();
+                		
+                		
+                		
+                		Timer timer3 = new Timer(5000, e -> {
+                			button.setVisible(false);
+                			button2.setVisible(false);
+                			button3.setVisible(false);
+                			button4.setVisible(false);
+                			button5.setVisible(false);
+                			button6.setVisible(false);
+                			button7.setVisible(false);
+                			button8.setVisible(false);
+                			button9.setVisible(false);
+                			button10.setVisible(false);
+                			button11.setVisible(false);
+                			button12.setVisible(false);
+                			button13.setVisible(false);
+                			button14.setVisible(false);
+                			button15.setVisible(false);
+                			button16.setVisible(false);
+                			button17.setVisible(false);
+                			button18.setVisible(false);
+                			button19.setVisible(false);
+                			button20.setVisible(false);
+                			button21.setVisible(false);
+                			button22.setVisible(false);
+                			
+                		});
+                		timer3.setRepeats(false);
+                		timer3.start();
+                		
+                		Timer timer4 = new Timer(6000, e -> {
+                			label.setText("");
+                		});
+                		
+                		timer4.setRepeats(false);
+                		timer4.start();
+                		
+                		Timer timer5 = new Timer(7000, e -> {
+                			frame.getContentPane().setBackground(Color.white);
+                		});
+                		
+                		timer5.setRepeats(false);
+                		timer5.start();
+                		
+                		Timer timer7 = new Timer(8000, e -> {
+                			label.setIcon(image2);
+                			label.setBounds(300, 50, 400, 500);
+                			label2.setText("Congrats! You've just got rickrolled!");
+                			label2.setBounds(250, 75, 500, 50);
+                			label2.setForeground(Color.black);
+                			label2.setFont(new Font("MV Boli",Font.PLAIN,25));
+                		});
+                		
+                		timer7.setRepeats(false);
+                		timer7.start();
+                		
+                	}
+                });
+        	});
+        	
+        	gameStartTimer.setRepeats(false);
+        	gameStartTimer.start();
+        	
+        	
+        });
+          
+    }
+}
