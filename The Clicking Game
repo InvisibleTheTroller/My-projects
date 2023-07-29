@@ -285,7 +285,7 @@ public class ClickingGame {
                         }
                     });
                 	timeDisplayThread.start();
-                	counts.addAndGet(2000000000);
+                	counts.incrementAndGet();
                 		if(!isButtonClicked21.get()) {
                     		if(!isButtonClicked20.get()) {
                         		if(!isButtonClicked19.get()) {
