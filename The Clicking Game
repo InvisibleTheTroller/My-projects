@@ -1,5 +1,7 @@
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 import javax.swing.*;
@@ -286,10 +288,248 @@ public class ClickingGame {
                     }
                 });
                 
+                if(!timerRunning) {
+                	KeyListener keyListener = new KeyListener() {
+        				
+						public void keyTyped(KeyEvent e) {
+						}
+						
+						public void keyReleased(KeyEvent e) {
+						}
+						
+						public void keyPressed(KeyEvent e) {
+							if((e.getKeyChar() == 'p' || e.getKeyChar() == 'P') && clickTimes.get() >= 0) {
+								timer1.stop();
+	                            pauseButton.setText("Resume");
+	                            button.setEnabled(false);
+	                            button2.setEnabled(false);
+	                            button3.setEnabled(false);
+	                            button4.setEnabled(false);
+	                            button5.setEnabled(false);
+	                            button6.setEnabled(false);
+	                            button7.setEnabled(false);
+	                            button8.setEnabled(false);
+	                            button9.setEnabled(false);
+	                            button10.setEnabled(false);
+	                            button11.setEnabled(false);
+	                            button12.setEnabled(false);
+	                            button13.setEnabled(false);
+	                            button14.setEnabled(false);
+	                            button15.setEnabled(false);
+	                            button16.setEnabled(false);
+	                            button17.setEnabled(false);
+	                            button18.setEnabled(false);
+	                            button19.setEnabled(false);
+	                            button20.setEnabled(false);
+	                            button21.setEnabled(false);
+	                            button22.setEnabled(false);
+							}
+						}
+					};
+					
+					frame.addKeyListener(keyListener);
+					
+					if(!timerRunning) {
+						KeyListener keyListener1 = new KeyListener() {
+    						
+    						@Override
+    						public void keyTyped(KeyEvent e) {
+    						}
+    						
+    						@Override
+    						public void keyReleased(KeyEvent e) {
+    						}
+    						
+    						@Override
+    						public void keyPressed(KeyEvent e) {
+    							
+    							if((e.getKeyChar() == 'r' || e.getKeyChar() == 'R') && clickTimes.get() >= 0) {
+    								timer1.start();
+    	                            pauseButton.setText("Pause");
+    	                            button.setEnabled(true);
+    	                            if(counts.get() >= 20) {
+    	                            	button2.setEnabled(true);
+    	                            }
+    	                            
+    	                            else {
+    	                            	button2.setEnabled(false);
+    	                            }
+    	                            
+    	                            if(counts.get() >= 100) {
+    	                            	button3.setEnabled(true);
+    	                            }
+    	                            
+    	                            else {
+    	                            	button3.setEnabled(false);
+    	                            }
+    	                            
+    	                            if(counts.get() >= 500) {
+    	                            	button4.setEnabled(true);
+    	                            }
+    	                            
+    	                            else {
+    	                            	button4.setEnabled(false);
+    	                            }
+    	                            
+    	                            if(counts.get() >= 1000) {
+    	                            	button5.setEnabled(true);
+    	                            }
+    	                            
+    	                            else {
+    	                            	button5.setEnabled(false);
+    	                            }
+    	                            
+    	                            if(counts.get() >= 5000) {
+    	                            	button6.setEnabled(true);
+    	                            }
+    	                            
+    	                            else {
+    	                            	button6.setEnabled(false);
+    	                            }
+    	                            
+    	                            if(counts.get() >= 15000) {
+    	                            	button7.setEnabled(true);
+    	                            }
+    	                            
+    	                            else {
+    	                            	button7.setEnabled(false);
+    	                            }
+    	                            
+    	                            if(counts.get() >= 30000) {
+    	                            	button8.setEnabled(true);
+    	                            }
+    	                            
+    	                            else {
+    	                            	button8.setEnabled(false);
+    	                            }
+    	                            
+    	                            if(counts.get() >= 50000) {
+    	                            	button9.setEnabled(true);
+    	                            }
+    	                            
+    	                            else {
+    	                            	button9.setEnabled(false);
+    	                            }
+    	                            
+    	                            if(counts.get() >= 100000) {
+    	                            	button10.setEnabled(true);
+    	                            }
+    	                            
+    	                            else {
+    	                            	button10.setEnabled(false);
+    	                            }
+    	                            
+    	                            if(counts.get() >= 200000) {
+    	                            	button11.setEnabled(true);
+    	                            }
+    	                            
+    	                            else {
+    	                            	button11.setEnabled(false);
+    	                            }
+    	                            
+    	                            if(counts.get() >= 500000) {
+    	                            	button12.setEnabled(true);
+    	                            }
+    	                            
+    	                            else {
+    	                            	button12.setEnabled(false);
+    	                            }
+    	                            
+    	                            if(counts.get() >= 1000000) {
+    	                            	button13.setEnabled(true);
+    	                            }
+    	                            
+    	                            else {
+    	                            	button13.setEnabled(false);
+    	                            }
+    	                            
+    	                            if(counts.get() >= 2500000) {
+    	                            	button14.setEnabled(true);
+    	                            }
+    	                            
+    	                            else {
+    	                            	button14.setEnabled(false);
+    	                            }
+    	                            
+    	                            if(counts.get() >= 5000000) {
+    	                            	button15.setEnabled(true);
+    	                            }
+    	                            
+    	                            else {
+    	                            	button15.setEnabled(false);
+    	                            }
+    	                            
+    	                            if(counts.get() >= 10000000) {
+    	                            	button16.setEnabled(true);
+    	                            }
+    	                            
+    	                            else {
+    	                            	button16.setEnabled(false);
+    	                            }
+    	                            
+    	                            if(counts.get() >= 25000000) {
+    	                            	button17.setEnabled(true);
+    	                            }
+    	                            
+    	                            else {
+    	                            	button17.setEnabled(false);
+    	                            }
+    	                            
+    	                            if(counts.get() >= 50000000) {
+    	                            	button18.setEnabled(true);
+    	                            }
+    	                            
+    	                            else {
+    	                            	button18.setEnabled(false);
+    	                            }
+    	                            
+    	                            if(counts.get() >= 100000000) {
+    	                            	button19.setEnabled(true);
+    	                            }
+    	                            
+    	                            else {
+    	                            	button19.setEnabled(false);
+    	                            }
+    	                            
+    	                            if(counts.get() >= 250000000) {
+    	                            	button20.setEnabled(true);
+    	                            }
+    	                            
+    	                            else {
+    	                            	button20.setEnabled(false);
+    	                            }
+    	                            
+    	                            if(counts.get() >= 500000000) {
+    	                            	button21.setEnabled(true);
+    	                            }
+    	                            
+    	                            else {
+    	                            	button21.setEnabled(false);
+    	                            }
+    	                            
+    	                            if(counts.get() >= 1000000000) {
+    	                            	button22.setEnabled(true);
+    	                            }
+    	                            
+    	                            else {
+    	                            	button22.setEnabled(false);
+    	                            }
+    							}
+    							
+    						}
+    					};
+    					
+    					frame.addKeyListener(keyListener1);
+    					
+					}
+                }
+                
+                timerRunning = !timerRunning;
+                
                 pauseButton.addActionListener(e -> {
                 	if(clickTimes.get() >= 1) {
                 		if (timerRunning) {
-                        	
+                			
                         	timer1.start();
                             pauseButton.setText("Pause");
                             button.setEnabled(true);
@@ -463,6 +703,7 @@ public class ClickingGame {
                             
                         }
                         else if(!timerRunning) {
+                        	
                         	timer1.stop();
                             pauseButton.setText("Resume");
                             button.setEnabled(false);
