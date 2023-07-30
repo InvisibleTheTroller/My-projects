@@ -152,7 +152,7 @@ public class ClickingGame {
         button3.setFocusable(false);
     	
         JLabel label = new JLabel();
-        label.setBounds(410, 175, 200, 50);
+        label.setBounds(420, 175, 200, 50);
         label.setFont(new Font("MV Boli",Font.PLAIN,15));
         label.setForeground(Color.white);
 
@@ -688,7 +688,7 @@ public class ClickingGame {
                 
                 button.addActionListener(a -> {
                 	timer1.start();
-                	counts.addAndGet(2000000000);
+                	counts.incrementAndGet();
                 	clickTimes.incrementAndGet();
                 		if(!isButtonClicked21.get()) {
                     		if(!isButtonClicked20.get()) {
@@ -718,6 +718,12 @@ public class ClickingGame {
                                                                                 if(counts.get() >= 2) {
                                                                                 	label.setText("Point: " + counts);
                                                                                 }
+                                                                                
+                                                                                if(counts.get() >= 10) {
+                                                                                	label.setText("Point: " + counts);
+                                                                                	label.setBounds(415, 175, 200, 50);
+                                                                                }
+                                                                                
                                                                                 if(counts.get() >= 20) {
                                                                                 	label.setText("Point: " + counts);
                                                                                 	button2.setEnabled(true);
@@ -750,6 +756,7 @@ public class ClickingGame {
                                                                         	}
                                                                         		if(counts.get() >= 1000) {
                                                                         			label.setText("Point: " + counts);
+                                                                        			label.setBounds(405, 175, 200, 50);
                                                                         			button5.setEnabled(true);
                                                                         		}
                                                                         }
@@ -766,6 +773,12 @@ public class ClickingGame {
                                                                     		counts.addAndGet(49);
                                                                     		label.setText("Point: " + counts);
                                                                     	}
+                                                                    		
+                                                                    		if(counts.get() >= 10000) {
+                                                                    			label.setText("Point: " + counts);
+                                                                    			label.setBounds(400, 175, 200, 50);
+                                                                    		}
+                                                                    		
                                                                     		if(counts.get() >= 15000) {
                                                                     			label.setText("Point: " + counts);
                                                                     			button7.setEnabled(true);
@@ -795,6 +808,7 @@ public class ClickingGame {
                                                                     	}
                                                                     		if(counts.get() >= 100000) {
                                                                     			label.setText("Point: " + counts);
+                                                                    			label.setBounds(395, 175, 200, 50);
                                                                     			button10.setEnabled(true);
                                                                     		}
                                                                     }
@@ -822,6 +836,7 @@ public class ClickingGame {
                                                             	}
                                                         		if(counts.get() >= 1000000) {
                                                         			label.setText("Point: " + counts);
+                                                        			label.setBounds(390, 175, 200, 50);
                                                         			button13.setEnabled(true);
                                                         		}
                                                         	}
@@ -849,6 +864,7 @@ public class ClickingGame {
                                                 	}
                                             		if(counts.get() >= 10000000) {
                                             			label.setText("Point: " + counts);
+                                            			label.setBounds(385, 175, 200, 50);
                                             			button16.setEnabled(true);
                                             		}
                                             	}
@@ -876,6 +892,7 @@ public class ClickingGame {
                                     	}
                                 		if(counts.get() >= 100000000) {
                                 			label.setText("Point: " + counts);
+                                			label.setBounds(375, 175, 200, 50);
                                 			button19.setEnabled(true);
                                 		}
                                 	}
@@ -903,6 +920,7 @@ public class ClickingGame {
                         	}
                     		if(counts.get() >= 1000000000) {
                     			label.setText("Point: " + counts);
+                    			label.setBounds(370, 175, 200, 50);
                     			button22.setEnabled(true);
                     		}
                     	}
