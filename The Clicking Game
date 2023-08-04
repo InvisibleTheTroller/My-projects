@@ -251,6 +251,7 @@ public class ClickingGame {
         startButton.setBounds(400, 200, 100, 50);
         startButton.setFont(new Font("MV Boli",Font.PLAIN,15));
         startButton.setFocusable(false);
+        startButton.setVisible(true);
         startButton.addActionListener(b -> {
         	
         	startButton.setEnabled(false);
@@ -1324,8 +1325,8 @@ public class ClickingGame {
                 
                 button.addActionListener(a -> {
                 	timer1.start();
-                	counts.addAndGet(2147483647);
-                	clickTimes.addAndGet(2147483647);
+                	counts.incrementAndGet();
+                	clickTimes.incrementAndGet();
                 		if(!isButtonClicked21.get()) {
                     		if(!isButtonClicked20.get()) {
                         		if(!isButtonClicked19.get()) {
