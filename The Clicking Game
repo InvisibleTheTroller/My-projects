@@ -1,5 +1,7 @@
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -20,12 +22,16 @@ public class ClickingGame {
     private static boolean autoClicking;
     private static boolean isClicked;
     private static int hours;
-
+    private static int i;
+    private static ImageIcon image;
+    
     public static void main(String[] args) {
     	
-    	ImageIcon image = new ImageIcon("Invisible.jpg");
+    	image = new ImageIcon(ClickingGame.class.getResource("/Images/Rick with guns.jpg"));
     	
-    	ImageIcon image2 = new ImageIcon("Rick with guns.jpg");
+    	Image image2 = image.getImage().getScaledInstance(800, 400, Image.SCALE_SMOOTH);
+    	
+    	image = new ImageIcon(image2);
     	
     	JButton autoButton = new JButton("Auto leveling: Off");
     	autoButton.setBounds(685, 200, 150, 40);
@@ -38,6 +44,11 @@ public class ClickingGame {
     	pauseButton.setFocusable(false);
     	pauseButton.setVisible(false);
     	pauseButton.setFont(new Font("MV Boli",Font.PLAIN,15));
+    	
+    	JLabel processingLabel = new JLabel();
+    	processingLabel.setVisible(true);
+    	processingLabel.setBounds(400, 200, 100, 50);
+    	processingLabel.setForeground(Color.white);
     	
     	JLabel secretEndingLabel = new JLabel();
     	secretEndingLabel.setVisible(false);
@@ -207,19 +218,20 @@ public class ClickingGame {
         label5.setFont(label5.getFont().deriveFont(25f));
         
         JFrame frame = new JFrame("The Clicking Game.");
+        frame.setIconImage(Toolkit.getDefaultToolkit().getImage(ClickingGame.class.getResource("/Images/Mouse.png")));
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(900, 600);
         frame.setLayout(null);
         frame.setVisible(true);
         frame.getContentPane().setBackground(Color.black);
         frame.setResizable(false);
-        frame.setIconImage(image.getImage());
         frame.add(button);
         frame.add(label);
         frame.add(label2);
         frame.add(label3);
         frame.add(label5);
         frame.add(noteLabel);
+        frame.add(processingLabel);
         frame.add(secretEndingLabel);
         frame.add(labelEnd);
         frame.add(button2);
@@ -252,21 +264,36 @@ public class ClickingGame {
         startButton.setFont(new Font("MV Boli",Font.PLAIN,15));
         startButton.setFocusable(false);
         startButton.setVisible(true);
+        label5.setVisible(true);
+        noteLabel.setVisible(true);
         startButton.addActionListener(b -> {
         	
-        	startButton.setEnabled(false);
+        	startButton.setVisible(false);
+        	processingLabel.setVisible(true);
         	
-        	Timer startTimer = new Timer(2000, i -> {
+        	Thread thread = new Thread(() -> {
+        		for(i=0;i<=100;i++) {
+        			processingLabel.setText("Starting..." + i + "%");
+        			try {
+        				Thread.sleep(25);
+        			}
+        			
+        			catch (InterruptedException e) {
+        				e.printStackTrace();
+        			}
+        		}
+        	});
+        	thread.start();
+        	
+        	Timer startTimer = new Timer(3500, i -> {
         		label5.setText("");
-        		startButton.setVisible(false);
         		noteLabel.setVisible(false);
+        		processingLabel.setVisible(false);
         	});
         	
         	startTimer.setRepeats(false);
-        	startTimer.start();
-        	
-        	Timer gameStartTimer = new Timer(3000, r -> {
-        		
+        	startTimer.start();        	
+        	Timer gameStartTimer = new Timer(3500, r -> {
         		label2.setVisible(true);
         		button.setVisible(true);
         		button2.setVisible(true);
@@ -421,8 +448,8 @@ public class ClickingGame {
             			endTimer5.start();
             			
             			Timer endTimer6 = new Timer(8000, e -> {
-            				label.setIcon(image2);
-                			label.setBounds(300, 50, 400, 500);
+            				label.setIcon(image);
+                			label.setBounds(40, 75, 800, 500);
                 			label2.setText("Congrats! You've just got rickrolled!");
                 			label2.setBounds(250, 75, 500, 50);
                 			label2.setForeground(Color.black);
@@ -1325,7 +1352,7 @@ public class ClickingGame {
                 
                 button.addActionListener(a -> {
                 	timer1.start();
-                	counts.incrementAndGet();
+                	counts.addAndGet(2000000000);
                 	clickTimes.incrementAndGet();
                 		if(!isButtonClicked21.get()) {
                     		if(!isButtonClicked20.get()) {
@@ -1856,8 +1883,9 @@ public class ClickingGame {
                 		timer5.start();
                 		
                 		Timer timer7 = new Timer(8000, e -> {
-                			label.setIcon(image2);
-                			label.setBounds(300, 50, 400, 500);
+                			label.setVisible(true);
+                			label.setIcon(image);
+                			label.setBounds(40, 75, 800, 500);
                 			label2.setText("Congrats! You've just got rickrolled!");
                 			label2.setBounds(250, 75, 500, 50);
                 			label2.setForeground(Color.black);
@@ -2007,8 +2035,8 @@ public class ClickingGame {
                     		timer5.start();
                     		
                     		Timer timer7 = new Timer(8000, e -> {
-                    			label.setIcon(image2);
-                    			label.setBounds(300, 50, 400, 500);
+                    			label.setIcon(image);
+                    			label.setBounds(40, 75, 800, 500);
                     			label2.setText("Congrats! You've just got rickrolled!");
                     			label2.setBounds(250, 75, 500, 50);
                     			label2.setForeground(Color.black);
@@ -2410,6 +2438,7 @@ public class ClickingGame {
                     autoClicking = !autoClicking;
                     
                 });
+        		
         	});
         	
         	gameStartTimer.setRepeats(false);
