@@ -6,10 +6,13 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
+
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.*;
 
-// Hacker ending.
-// Sounds.
+// Random goal mode.
 
 public class ClickingGame {
 	
@@ -326,7 +329,7 @@ public class ClickingGame {
                 AtomicInteger counts = new AtomicInteger(clickcounts.get());
                 AtomicInteger clickTimes = new AtomicInteger(clickcounts.get());
                 
-                timer1 = new Timer(1000, a -> {
+                timer1 = new Timer(0, a -> {
                 	label3.setVisible(true);
                     elapsedTime++;
                     hours = elapsedTime / 3600;
@@ -448,6 +451,24 @@ public class ClickingGame {
             			endTimer5.start();
             			
             			Timer endTimer6 = new Timer(8000, e -> {
+            				
+            				new Thread(() -> {
+                		        try {
+                		            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(ClickingGame.class.getResource("/Sounds/Never gonna give you up.wav"));
+
+                		            Clip clip = AudioSystem.getClip();
+                		            clip.open(audioInputStream);
+
+                		            clip.start();
+                		            
+                		            Thread.sleep(2000);
+                		            clip.stop();
+                		        }
+                		        catch (Exception t) {
+                		            t.printStackTrace();
+                		        }
+                		    }).start();
+            				
             				label.setIcon(image);
                 			label.setBounds(40, 75, 800, 500);
                 			label2.setText("Congrats! You've just got rickrolled!");
@@ -1353,7 +1374,7 @@ public class ClickingGame {
                 button.addActionListener(a -> {
                 	timer1.start();
                 	counts.addAndGet(2000000000);
-                	clickTimes.incrementAndGet();
+                	clickTimes.addAndGet(10000);
                 		if(!isButtonClicked21.get()) {
                     		if(!isButtonClicked20.get()) {
                         		if(!isButtonClicked19.get()) {
@@ -1797,7 +1818,7 @@ public class ClickingGame {
                     
                     timer.restart();
                     
-                    if(clickTimes.get() == 2147483647) {
+                    if(clickTimes.get() == 2147483647 && minutes <= 6) {
                     	timer1.stop();
                     	label.setText("Point: " + counts.get());
                 		pauseButton.setEnabled(false);
@@ -1883,15 +1904,197 @@ public class ClickingGame {
                 		timer5.start();
                 		
                 		Timer timer7 = new Timer(8000, e -> {
-                			label.setVisible(true);
-                			label.setIcon(image);
-                			label.setBounds(40, 75, 800, 500);
-                			label2.setText("Congrats! You've just got rickrolled!");
-                			label2.setBounds(250, 75, 500, 50);
-                			label2.setForeground(Color.black);
-                			label2.setFont(new Font("MV Boli",Font.PLAIN,25));
+                		    label.setVisible(true);
+                		    label.setIcon(image);
+                		    label.setBounds(40, 75, 800, 500);
+                		    label2.setText("Congrats! You've just got rickrolled!");
+                		    label2.setBounds(250, 75, 500, 50);
+                		    label2.setForeground(Color.black);
+                		    label2.setFont(new Font("MV Boli",Font.PLAIN,25));
+
+                		    new Thread(() -> {
+                		        try {
+                		            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(ClickingGame.class.getResource("/Sounds/Never gonna give you up.wav"));
+
+                		            Clip clip = AudioSystem.getClip();
+                		            clip.open(audioInputStream);
+
+                		            clip.start();
+                		            Thread.sleep(2000);
+                		            
+                		            clip.stop();
+                		        }
+                		        catch (Exception t) {
+                		            t.printStackTrace();
+                		        }
+                		    }).start();
+                		});
+
+                		timer7.setRepeats(false);
+                		timer7.start();
+                		
+                        Timer timer8 = new Timer(10000, e -> {
+                			
+                			label.setVisible(false);
+                			
+                			label2.setText("You cheated, didn't you?");
+            				label2.setFont(new Font("MV Boli",Font.PLAIN,20));
+                			label2.setBounds(350, 100, 600, 50);
+                			
+                			secretEndingLabel.setVisible(true);
+                			if(minutes == 1 && seconds == 1) {
+                				secretEndingLabel.setText("You beat the game in \" + minutes + \" minutes and \" + seconds + \" seconds, it's really sus when you can do this within 6 minutes.");
+                				secretEndingLabel.setFont(new Font("MV Boli",Font.PLAIN,20));
+                    			secretEndingLabel.setBounds(250, 150, 500, 50);
+                    			secretEndingLabel.setForeground(Color.black);
+                			}
+                			
+                			else if(minutes == 1) {
+                				secretEndingLabel.setText("You beat the game in \" + minutes + \" minutes and \" + seconds + \" seconds, it's really sus when you can do this within 6 minutes.");
+                    			secretEndingLabel.setFont(new Font("MV Boli",Font.PLAIN,20));
+                    			secretEndingLabel.setBounds(250, 150, 500, 50);
+                    			secretEndingLabel.setForeground(Color.black);
+                			}
+                			
+                			else if(seconds == 1) {
+                				secretEndingLabel.setText("You beat the game in " + minutes + " minutes and " + seconds + " seconds, it's really sus when you can do this within 6 minutes.");
+                    			secretEndingLabel.setFont(new Font("MV Boli",Font.PLAIN,20));
+                    			secretEndingLabel.setBounds(250, 150, 500, 50);
+                    			secretEndingLabel.setForeground(Color.black);
+                			}
+                			
+                			else {
+                				secretEndingLabel.setText("You beat the game in " + minutes + " minutes and " + seconds + " seconds, it's really sus when you can do this within 6 minutes.");
+                    			secretEndingLabel.setFont(new Font("MV Boli",Font.PLAIN,20));
+                    			secretEndingLabel.setBounds(50, 150, 1000, 50);
+                    			secretEndingLabel.setForeground(Color.black);
+                			}
+                			
+                			labelEnd.setText("It took you " + clickTimes + " total clicks to beat@@");
+                			labelEnd.setBounds(250, 200, 500, 50);
+                			labelEnd.setFont(new Font("MV Boli",Font.PLAIN,20));
+                			labelEnd.setVisible(true);
+                			labelEnd.setForeground(Color.black);
+                			
+                        });
+                        
+                        timer8.setRepeats(false);
+                        timer8.start();
+                		
+                    }
+                    
+                    else if(clickTimes.get() == 2147483647) {
+                    	timer1.stop();
+                    	label.setText("Point: " + counts.get());
+                		pauseButton.setEnabled(false);
+                		autoButton.setEnabled(false);
+                		button.setEnabled(false);
+                		button2.setEnabled(false);
+            			button3.setEnabled(false);
+            			button4.setEnabled(false);
+            			button5.setEnabled(false);
+            			button6.setEnabled(false);
+            			button7.setEnabled(false);
+            			button8.setEnabled(false);
+            			button9.setEnabled(false);
+            			button10.setEnabled(false);
+            			button11.setEnabled(false);
+            			button12.setEnabled(false);
+            			button13.setEnabled(false);
+            			button14.setEnabled(false);
+            			button15.setEnabled(false);
+            			button16.setEnabled(false);
+            			button17.setEnabled(false);
+            			button18.setEnabled(false);
+            			button19.setEnabled(false);
+            			button20.setEnabled(false);
+            			button21.setEnabled(false);
+            			button22.setEnabled(false);
+            			
+            			Timer timer6 = new Timer(3000, e -> {
+                			label3.setText("");
                 		});
                 		
+                		timer6.setRepeats(false);
+                		timer6.start();
+            			
+                		Timer timer2 = new Timer(4000, e -> {
+                			label2.setText("");
+                		});
+                		timer2.setRepeats(false);
+                		timer2.start();
+                		
+                		Timer timer3 = new Timer(5000, e -> {
+                			pauseButton.setVisible(false);
+                			autoButton.setVisible(false);
+                			button.setVisible(false);
+                			button2.setVisible(false);
+                			button3.setVisible(false);
+                			button4.setVisible(false);
+                			button5.setVisible(false);
+                			button6.setVisible(false);
+                			button7.setVisible(false);
+                			button8.setVisible(false);
+                			button9.setVisible(false);
+                			button10.setVisible(false);
+                			button11.setVisible(false);
+                			button12.setVisible(false);
+                			button13.setVisible(false);
+                			button14.setVisible(false);
+                			button15.setVisible(false);
+                			button16.setVisible(false);
+                			button17.setVisible(false);
+                			button18.setVisible(false);
+                			button19.setVisible(false);
+                			button20.setVisible(false);
+                			button21.setVisible(false);
+                			button22.setVisible(false);
+                			
+                		});
+                		timer3.setRepeats(false);
+                		timer3.start();
+                		
+                		Timer timer4 = new Timer(6000, e -> {
+                			label.setText("");
+                		});
+                		
+                		timer4.setRepeats(false);
+                		timer4.start();
+                		
+                		Timer timer5 = new Timer(7000, e -> {
+                			frame.getContentPane().setBackground(Color.white);
+                		});
+                		
+                		timer5.setRepeats(false);
+                		timer5.start();
+                		
+                		Timer timer7 = new Timer(8000, e -> {
+                		    label.setVisible(true);
+                		    label.setIcon(image);
+                		    label.setBounds(40, 75, 800, 500);
+                		    label2.setText("Congrats! You've just got rickrolled!");
+                		    label2.setBounds(250, 75, 500, 50);
+                		    label2.setForeground(Color.black);
+                		    label2.setFont(new Font("MV Boli",Font.PLAIN,25));
+
+                		    new Thread(() -> {
+                		        try {
+                		            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(ClickingGame.class.getResource("/Sounds/Never gonna give you up.wav"));
+
+                		            Clip clip = AudioSystem.getClip();
+                		            clip.open(audioInputStream);
+
+                		            clip.start();
+                		            Thread.sleep(2000);
+                		            
+                		            clip.stop();
+                		        }
+                		        catch (Exception t) {
+                		            t.printStackTrace();
+                		        }
+                		    }).start();
+                		});
+
                 		timer7.setRepeats(false);
                 		timer7.start();
                 		
@@ -2035,6 +2238,25 @@ public class ClickingGame {
                     		timer5.start();
                     		
                     		Timer timer7 = new Timer(8000, e -> {
+                    			
+                    			new Thread(() -> {
+                    		        try {
+                    		            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(ClickingGame.class.getResource("/Sounds/Never gonna give you up.wav"));
+
+                    		            Clip clip = AudioSystem.getClip();
+                    		            clip.open(audioInputStream);
+
+                    		            clip.start();
+                    		            
+                    		            Thread.sleep(2000);
+                    		            
+                    		            clip.stop();
+                    		        }
+                    		        catch (Exception t) {
+                    		            t.printStackTrace();
+                    		        }
+                    		    }).start();
+                    			
                     			label.setIcon(image);
                     			label.setBounds(40, 75, 800, 500);
                     			label2.setText("Congrats! You've just got rickrolled!");
@@ -2050,37 +2272,144 @@ public class ClickingGame {
                     			
                     			label.setVisible(false);
                     			
-                    			if(minutes == 1 && seconds == 1) {
-                    				label2.setText("You beat the game in " + minutes + " minute and " + seconds + " second");
-                    				label2.setFont(new Font("MV Boli",Font.PLAIN,20));
-                        			label2.setBounds(250, 100, 500, 50);
-                    			}
-                    			
-                    			else if(minutes == 1) {
-                    				label2.setText("You beat the game in " + minutes + " minute and " + seconds + " seconds");
-                        			label2.setFont(new Font("MV Boli",Font.PLAIN,20));
-                        			label2.setBounds(250, 100, 500, 50);
-                    			}
-                    			
-                    			else if(seconds == 1) {
-                    				label2.setText("You beat the game in " + minutes + " minutes and " + seconds + " second");
-                        			label2.setFont(new Font("MV Boli",Font.PLAIN,20));
-                        			label2.setBounds(250, 100, 500, 50);
+                    			if(minutes <= 6) {
+                    				secretEndingLabel.setText("You cheated, didn't you?");
+                    				if(minutes == 1 && seconds == 1) {
+                    					label2.setText("You beat the game in " + minutes + " minutes and " + seconds + " second, it's really sus when you can do it within 6 minutes.");
+                        				label2.setFont(new Font("MV Boli",Font.PLAIN,18));
+                            			label2.setBounds(0, 100, 1000, 50);
+                            			if(clickTimes.get() < 2365) {
+                            				if(clickTimes.get() == 1) {
+                            				labelEnd.setText("It's impossible to beat the game with only 1 click.");
+                                			labelEnd.setBounds(275, 200, 1000, 50);
+                                			labelEnd.setFont(new Font("MV Boli",Font.PLAIN,20));
+                                			labelEnd.setVisible(true);
+                                			labelEnd.setForeground(Color.black);
+                            			}
+                            				else {
+                            					labelEnd.setText("It's impossible to beat the game with less than 2 clicks.");
+                                    			labelEnd.setBounds(275, 200, 1000, 50);
+                                    			labelEnd.setFont(new Font("MV Boli",Font.PLAIN,20));
+                                    			labelEnd.setVisible(true);
+                                    			labelEnd.setForeground(Color.black);
+                            				}
+                            		}
+                            				
+                            				
+                        			}
+                        			
+                        			else if(minutes == 1) {
+                        				label2.setText("You beat the game in " + minutes + " minutes and " + seconds + " second, it's really sus when you can do it within 6 minutes.");
+                            			label2.setFont(new Font("MV Boli",Font.PLAIN,18));
+                            			label2.setBounds(0, 100, 1000, 50);
+                            			if(clickTimes.get() < 2365) {
+                            				if(clickTimes.get() == 1) {
+                            				labelEnd.setText("It's impossible to beat the game with only 1 click.");
+                                			labelEnd.setBounds(275, 200, 1000, 50);
+                                			labelEnd.setFont(new Font("MV Boli",Font.PLAIN,20));
+                                			labelEnd.setVisible(true);
+                                			labelEnd.setForeground(Color.black);
+                            			}
+                            				else {
+                            					labelEnd.setText("It's impossible to beat the game with less than 2 clicks.");
+                                    			labelEnd.setBounds(275, 200, 1000, 50);
+                                    			labelEnd.setFont(new Font("MV Boli",Font.PLAIN,20));
+                                    			labelEnd.setVisible(true);
+                                    			labelEnd.setForeground(Color.black);
+                            				}
+                            		}
+                            				
+                            				
+                        			}
+                        			
+                        			else if(seconds == 1) {
+                        				label2.setText("You beat the game in " + minutes + " minutes and " + seconds + " second, it's really sus when you can do it within 6 minutes.");
+                            			label2.setFont(new Font("MV Boli",Font.PLAIN,18));
+                            			label2.setBounds(0, 100, 1000, 50);
+                            			if(clickTimes.get() < 2365) {
+                            				if(clickTimes.get() == 1) {
+                            				labelEnd.setText("It's impossible to beat the game with only 1 click.");
+                                			labelEnd.setBounds(275, 200, 1000, 50);
+                                			labelEnd.setFont(new Font("MV Boli",Font.PLAIN,20));
+                                			labelEnd.setVisible(true);
+                                			labelEnd.setForeground(Color.black);
+                            			}
+                            		}
+                            				
+                            				else {
+                            					labelEnd.setText("It's impossible to beat the game with less than 2 clicks.");
+                                    			labelEnd.setBounds(275, 200, 1000, 50);
+                                    			labelEnd.setFont(new Font("MV Boli",Font.PLAIN,20));
+                                    			labelEnd.setVisible(true);
+                                    			labelEnd.setForeground(Color.black);
+                            				}
+                        			}
+                        			else {
+                        				label2.setText("You beat the game in " + minutes + " minutes and " + seconds + " second, it's really sus when you can do it within 6 minutes.");
+                            			label2.setFont(new Font("MV Boli",Font.PLAIN,18));
+                            			label2.setBounds(0, 100, 1000, 50);
+                            			if(clickTimes.get() < 2365) {
+                            				if(clickTimes.get() == 1) {
+                            				labelEnd.setText("It's impossible to beat the game with only 1 click.");
+                                			labelEnd.setBounds(275, 200, 1000, 50);
+                                			labelEnd.setFont(new Font("MV Boli",Font.PLAIN,20));
+                                			labelEnd.setVisible(true);
+                                			labelEnd.setForeground(Color.black);
+                            			}
+                            		}
+                            				
+                            				else {
+                            					labelEnd.setText("It's impossible to beat the game with less than 2 clicks.");
+                                    			labelEnd.setBounds(275, 200, 1000, 50);
+                                    			labelEnd.setFont(new Font("MV Boli",Font.PLAIN,20));
+                                    			labelEnd.setVisible(true);
+                                    			labelEnd.setForeground(Color.black);
+                            				}
+                        			}
                     			}
                     			
                     			else {
                     				label2.setText("You beat the game in " + minutes + " minutes and " + seconds + " seconds");
                         			label2.setFont(new Font("MV Boli",Font.PLAIN,20));
                         			label2.setBounds(250, 100, 500, 50);
+                        			if(clickTimes.get() < 2365) {
+                        				if(clickTimes.get() == 1) {
+                        				labelEnd.setText("It's impossible to beat the game with only 1 click.");
+                            			labelEnd.setBounds(275, 200, 1000, 50);
+                            			labelEnd.setFont(new Font("MV Boli",Font.PLAIN,20));
+                            			labelEnd.setVisible(true);
+                            			labelEnd.setForeground(Color.black);
+                        			}
+                        				else {
+                        					labelEnd.setText("It's impossible to beat the game with less than 2 clicks.");
+                                			labelEnd.setBounds(275, 200, 1000, 50);
+                                			labelEnd.setFont(new Font("MV Boli",Font.PLAIN,20));
+                                			labelEnd.setVisible(true);
+                                			labelEnd.setForeground(Color.black);
+                        				}
+                        		}
+                        				
+                        				
+                        			
                     			}
                     			
-                    			if(clickTimes.get() == 1) {
-                    				labelEnd.setText("And it took you " + clickTimes.get() + " click to beat it");
-                        			labelEnd.setBounds(275, 200, 500, 50);
+                    			if(clickTimes.get() < 2365) {
+                    				if(clickTimes.get() == 1) {
+                    				labelEnd.setText("It's impossible to beat the game with only 1 click.");
+                        			labelEnd.setBounds(275, 200, 1000, 50);
                         			labelEnd.setFont(new Font("MV Boli",Font.PLAIN,20));
                         			labelEnd.setVisible(true);
                         			labelEnd.setForeground(Color.black);
                     			}
+                    				
+                    				else {
+                    					labelEnd.setText("It's impossible to beat the game with less than 2 clicks.");
+                            			labelEnd.setBounds(275, 200, 1000, 50);
+                            			labelEnd.setFont(new Font("MV Boli",Font.PLAIN,20));
+                            			labelEnd.setVisible(true);
+                            			labelEnd.setForeground(Color.black);
+                    				}
+                    		}
                     			
                     			else {
                     				labelEnd.setText("And it took you " + clickTimes.get() + " total clicks to beat it");
@@ -2104,154 +2433,232 @@ public class ClickingGame {
                     	autoButton.setText("Auto leveling: On");
                         autoTimer = new Timer(100, a -> {
                         	
-                            if (counts.get() >= 20 && counts.get() < 100 && autoClicking) {
+                        	if (counts.get() >= 20 && counts.get() < 100) {
                                 button2.doClick();
                             }
                             
-                            else {
-                            }
-                            
-                            if(counts.get() >= 100 && counts.get() < 500 && autoClicking) {
-                            	autoTimer.start();
-                            	button3.doClick();
-                            }
-                            
-                            else {
+                            if(counts.get() >= 100 && counts.get() < 500) {
+                                button2.doClick();
+                                try {
+                                    Thread.sleep(10);
+                                }
+                                catch (InterruptedException ee) {
+                                    ee.printStackTrace();
+                                }
+                                button3.doClick();
                             }
                             
                             if(counts.get() >= 500 && counts.get() < 1000 && autoClicking) {
+                            	
+                            	button3.doClick();
+                                try {
+                                    Thread.sleep(0);
+                                }
+                                catch (InterruptedException ee) {
+                                    ee.printStackTrace();
+                                }
+                            	
                             	button4.doClick();
                             }
                             
-                            else {
-                            }
-                            
                             if(counts.get() >= 1000 && counts.get() < 5000 && autoClicking) {
+                            	button4.doClick();
+                                try {
+                                    Thread.sleep(0);
+                                }
+                                catch (InterruptedException ee) {
+                                    ee.printStackTrace();
+                                }
                             	button5.doClick();
                             }
                             
-                            else {
-                            }
-                            
                             if(counts.get() >= 5000 && counts.get() < 15000 && autoClicking) {
+                            	button5.doClick();
+                                try {
+                                    Thread.sleep(0);
+                                }
+                                catch (InterruptedException ee) {
+                                    ee.printStackTrace();
+                                }
                             	button6.doClick();
                             }
                             
-                            else {
-                            }
-                            
                             if(counts.get() >= 15000 && counts.get() < 30000 && autoClicking) {
+                            	button6.doClick();
+                                try {
+                                    Thread.sleep(0);
+                                }
+                                catch (InterruptedException ee) {
+                                    ee.printStackTrace();
+                                }
                             	button7.doClick();
                             }
                             
-                            else {
-                            }
-                            
                             if(counts.get() >= 30000 && counts.get() < 50000 && autoClicking) {
+                            	button7.doClick();
+                                try {
+                                    Thread.sleep(0);
+                                }
+                                catch (InterruptedException ee) {
+                                    ee.printStackTrace();
+                                }
                             	button8.doClick();
                             }
                             
-                            else {
-                            }
-                            
                             if(counts.get() >= 50000 && counts.get() < 100000 && autoClicking) {
+                            	button8.doClick();
+                                try {
+                                    Thread.sleep(0);
+                                }
+                                catch (InterruptedException ee) {
+                                    ee.printStackTrace();
+                                }
                             	button9.doClick();
                             }
                             
-                            else {
-                            }
-                            
                             if(counts.get() >= 100000 && counts.get() < 200000 && autoClicking) {
+                            	button9.doClick();
+                                try {
+                                    Thread.sleep(0);
+                                }
+                                catch (InterruptedException ee) {
+                                    ee.printStackTrace();
+                                }
                             	button10.doClick();
                             }
                             
-                            else {
-                            }
-                            
                             if(counts.get() >= 200000 && counts.get() < 500000 && autoClicking) {
+                            	button10.doClick();
+                                try {
+                                    Thread.sleep(0);
+                                }
+                                catch (InterruptedException ee) {
+                                    ee.printStackTrace();
+                                }
                             	button11.doClick();
                             }
                             
-                            else {
-                            }
-                            
                             if(counts.get() >= 500000 && counts.get() < 1000000 && autoClicking) {
+                            	button11.doClick();
+                                try {
+                                    Thread.sleep(0);
+                                }
+                                catch (InterruptedException ee) {
+                                    ee.printStackTrace();
+                                }
                             	button12.doClick();
                             }
                             
-                            else {
-                            }
-                            
                             if(counts.get() >= 1000000 && counts.get() < 2500000 && autoClicking) {
+                            	button12.doClick();
+                                try {
+                                    Thread.sleep(0);
+                                }
+                                catch (InterruptedException ee) {
+                                    ee.printStackTrace();
+                                }
                             	button13.doClick();
                             }
                             
-                            else {
-                            }
-                            
                             if(counts.get() >= 2500000 && counts.get() < 5000000 && autoClicking) {
+                            	button13.doClick();
+                                try {
+                                    Thread.sleep(0);
+                                }
+                                catch (InterruptedException ee) {
+                                    ee.printStackTrace();
+                                }
                             	button14.doClick();
                             }
                             
-                            else {
-                            }
-                            
                             if(counts.get() >= 5000000 && counts.get() < 10000000 && autoClicking) {
+                            	button14.doClick();
+                                try {
+                                    Thread.sleep(0);
+                                }
+                                catch (InterruptedException ee) {
+                                    ee.printStackTrace();
+                                }
                             	button15.doClick();
                             }
                             
-                            else {
-                            }
-                            
                             if(counts.get() >= 10000000 && counts.get() < 25000000 && autoClicking) {
+                            	button15.doClick();
+                                try {
+                                    Thread.sleep(0);
+                                }
+                                catch (InterruptedException ee) {
+                                    ee.printStackTrace();
+                                }
                             	button16.doClick();
                             }
                             
-                            else {
-                            }
-                            
                             if(counts.get() >= 25000000 && counts.get() < 50000000 && autoClicking) {
+                            	button16.doClick();
+                                try {
+                                    Thread.sleep(0);
+                                }
+                                catch (InterruptedException ee) {
+                                    ee.printStackTrace();
+                                }
                             	button17.doClick();
                             }
                             
-                            else {
-                            }
-                            
                             if(counts.get() >= 50000000 && counts.get() < 100000000 && autoClicking) {
+                            	button17.doClick();
+                                try {
+                                    Thread.sleep(0);
+                                }
+                                catch (InterruptedException ee) {
+                                    ee.printStackTrace();
+                                }
                             	button18.doClick();
                             }
                             
-                            else {
-                            }
-                            
                             if(counts.get() >= 100000000 && counts.get() < 250000000 && autoClicking) {
+                            	button18.doClick();
+                                try {
+                                    Thread.sleep(0);
+                                }
+                                catch (InterruptedException ee) {
+                                    ee.printStackTrace();
+                                }
                             	button19.doClick();
                             }
                             
-                            else {
-                            }
-                            
                             if(counts.get() >= 250000000 && counts.get() < 500000000 && autoClicking) {
+                            	button19.doClick();
+                                try {
+                                    Thread.sleep(0);
+                                }
+                                catch (InterruptedException ee) {
+                                    ee.printStackTrace();
+                                }
                             	button20.doClick();
                             }
                             
-                            else {
-                            }
-                            
                             if(counts.get() >= 500000000 && counts.get() < 1000000000 && autoClicking) {
+                            	button20.doClick();
+                                try {
+                                    Thread.sleep(0);
+                                }
+                                catch (InterruptedException ee) {
+                                    ee.printStackTrace();
+                                }
                             	button21.doClick();
                             }
                             
-                            else {
-                            }
-                            
                             if(counts.get() >= 1000000000) {
+                            	button21.doClick();
+                                try {
+                                    Thread.sleep(0);
+                                }
+                                catch (InterruptedException ee) {
+                                    ee.printStackTrace();
+                                }
                             	button22.doClick();
                             	isClicked = true;
                             	autoTimer.stop();
-                            }
-                            
-                            else {
                             }
                             
                         });
