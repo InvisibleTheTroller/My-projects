@@ -13,6 +13,8 @@ import javax.sound.sampled.Clip;
 import javax.swing.*;
 
 // Random goal mode.
+// Save data.
+// GridBagLayout.
 
 public class ClickingGame {
 	
@@ -329,7 +331,7 @@ public class ClickingGame {
                 AtomicInteger counts = new AtomicInteger(clickcounts.get());
                 AtomicInteger clickTimes = new AtomicInteger(clickcounts.get());
                 
-                timer1 = new Timer(0, a -> {
+                timer1 = new Timer(1000, a -> {
                 	label3.setVisible(true);
                     elapsedTime++;
                     hours = elapsedTime / 3600;
@@ -1373,8 +1375,8 @@ public class ClickingGame {
                 
                 button.addActionListener(a -> {
                 	timer1.start();
-                	counts.addAndGet(2000000000);
-                	clickTimes.addAndGet(10000);
+                	counts.incrementAndGet();
+                	clickTimes.incrementAndGet();
                 		if(!isButtonClicked21.get()) {
                     		if(!isButtonClicked20.get()) {
                         		if(!isButtonClicked19.get()) {
